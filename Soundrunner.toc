@@ -1,0 +1,14 @@
+## Interface: 16001
+## Title: Soundrunner
+## Notes: Quick volume mixer with five one-click sound presets.
+## Version: 0.1.0
+## X-License: GPL-3.0-or-later
+## SavedVariables: SoundrunnerDB
+## IconTexture: Interface\COMMON\VoiceChat-Speaker
+
+Channels.lua
+Slots.lua
+UI\Fader.lua
+UI\Mixer.lua
+UI\MinimapButton.lua
+Core.lua
