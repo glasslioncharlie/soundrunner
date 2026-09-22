@@ -1,0 +1,4 @@
+package-as: Soundrunner
+
+ignore:
+  - tests
