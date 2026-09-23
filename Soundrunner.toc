@@ -1,7 +1,7 @@
 ## Interface: 16001, 120100
 ## Title: Soundrunner
 ## Notes: Quick volume mixer with five one-click sound presets.
-## Version: 0.1.2
+## Version: 0.1.3
 ## X-License: GPL-3.0-or-later
 ## SavedVariables: SoundrunnerDB
 ## IconTexture: Interface\COMMON\VoiceChat-Speaker
