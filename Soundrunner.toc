@@ -1,10 +1,13 @@
-## Interface: 16001
+## Interface: 16001, 120100
 ## Title: Soundrunner
 ## Notes: Quick volume mixer with five one-click sound presets.
-## Version: 0.1.1
+## Version: 0.1.2
 ## X-License: GPL-3.0-or-later
 ## SavedVariables: SoundrunnerDB
 ## IconTexture: Interface\COMMON\VoiceChat-Speaker
+## AddonCompartmentFunc: Soundrunner_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: Soundrunner_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: Soundrunner_OnAddonCompartmentLeave
 
 Channels.lua
 Slots.lua

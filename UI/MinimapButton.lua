@@ -55,11 +55,7 @@ function MinimapButton:Create()
   ns.Fader.SetSpeakerArt(icon, false)
 
   button:SetScript("OnClick", function(self, mouseButton)
-    if mouseButton == "RightButton" then
-      MinimapButton:ShowMenu(self)
-    else
-      ns.Mixer:Toggle()
-    end
+    MinimapButton:OnClick(self, mouseButton)
   end)
 
   button:SetScript("OnDragStart", function(self)
@@ -71,9 +67,7 @@ function MinimapButton:Create()
 
   button:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-    GameTooltip:SetText("Soundrunner")
-    GameTooltip:AddLine("Click to open the mixer.", 1, 1, 1)
-    GameTooltip:AddLine("Right-click to switch presets.", 1, 1, 1)
+    MinimapButton:AddTooltipLines()
     GameTooltip:AddLine("Drag to move this button.", 1, 1, 1)
     GameTooltip:Show()
   end)
@@ -82,6 +76,20 @@ function MinimapButton:Create()
   self.button = button
   self:Update()
   return button
+end
+
+function MinimapButton:OnClick(owner, mouseButton)
+  if mouseButton == "RightButton" then
+    self:ShowMenu(owner)
+  else
+    ns.Mixer:Toggle()
+  end
+end
+
+function MinimapButton:AddTooltipLines()
+  GameTooltip:SetText("Soundrunner")
+  GameTooltip:AddLine("Click to open the mixer.", 1, 1, 1)
+  GameTooltip:AddLine("Right-click to switch presets.", 1, 1, 1)
 end
 
 function MinimapButton:ShowMenu(owner)
@@ -115,4 +123,20 @@ function MinimapButton:Update()
   if not self.button then return end
   updatePosition(self.button)
   self.button:SetShown(not ns.db.minimap.hide)
+end
+
+-- Addon compartment (the addon menu button); named in the TOC, so these must be global.
+-- The compartment closes on click, so the preset menu is owned by UIParent instead.
+function Soundrunner_OnAddonCompartmentClick(_, mouseButton)
+  MinimapButton:OnClick(UIParent, mouseButton)
+end
+
+function Soundrunner_OnAddonCompartmentEnter(_, menuItem)
+  GameTooltip:SetOwner(menuItem, "ANCHOR_LEFT")
+  MinimapButton:AddTooltipLines()
+  GameTooltip:Show()
+end
+
+function Soundrunner_OnAddonCompartmentLeave()
+  GameTooltip:Hide()
 end
